@@ -5,23 +5,23 @@ from tkinter import messagebox
 random.seed(42)
 root = Tk()
 root.title('Codemy.com - Match Game!')
-#root.iconbitmap()
+# root.iconbitmap()
 root.geometry("500x600")
-root.configure(bg="light blue")  # setting root window's background color to "light blue"
+root.configure(bg="purple")  # setting root window's background color to "purple"
 
 global winner, matches, score
-#Set Winner counter to 0
+# Set Winner counter to 0
 winner = 0
 score = 0
 
-#Create our matches
+# Create our matches
 matches = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]
 
-#Shuffle our matches
+# Shuffle our matches
 random.shuffle(matches)
 
 # Create button frame
-my_frame = Frame(root, bg="light blue")  # setting frame's background color to "light blue"
+my_frame = Frame(root, bg="purple")  # setting frame's background color to "purple"
 my_frame.pack(pady=10)
 
 # Define some variables
@@ -31,26 +31,9 @@ answer_dict = {}
 
 # Reset the Game
 def reset():
-    def reset():
-        global matches, winner
-        winner = 0
-        # Create our matches
-        matches = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]
-        # Shuffle our matches
-        random.shuffle(matches)
-
-        # Reset label
-        my_label.config(text="")
-
-        # Rseset our tiles
-        button_list = [b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15]
-        # Loop thru buttons and change colors
-        for button in button_list:
-            button.config(text=" ", bg="SystemButtonFace", state="normal")
-
-def reset():
-    global matches, winner
+    global matches, winner, score
     winner = 0
+    score = 0
     # Create our matches
     matches = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]
     # Shuffle our matches
@@ -59,19 +42,18 @@ def reset():
     # Reset label
     my_label.config(text="")
 
-    # Rseset our tiles
+    # Reset our tiles
     button_list = [b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15]
-    # Loop thru buttons and change colors
+    # Loop through buttons and change colors
     for button in button_list:
-        button.config(text=" ",bg="SystemButtonFace", state="normal")
+        button.config(text=" ", bg="yellow", state="normal")
 
-
-#Create winner function
+# Create winner function
 def win():
-    scoreboard_label.config(text = "Score: " + str(score))
-    my_label.config(text="congradualtions! You Win!!!")
+    scoreboard_label.config(text="Score: " + str(score))
+    my_label.config(text="Congratulations! You Win!!!")
     button_list = [b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15]
-    # Loop thru buttons and change colors
+    # Loop through buttons and change colors
     for button in button_list:
         button.config(bg="yellow")
 
@@ -84,7 +66,7 @@ def button_click(b, number):
         answer_list.append(number)
         # add button and number to Answer Dictionary
         answer_dict[b] = matches[number]
-        # Incerement our counter
+        # Increment our counter
         count += 1
         print(answer_dict)
 
@@ -94,72 +76,85 @@ def button_click(b, number):
             my_label.config(text="MATCH!")
             score += int(matches[answer_list[0]])
             print(score)
-            scoreboard_label.config(text= f"Score= {score}")
+            scoreboard_label.config(text=f"Score: {score}")
             for key in answer_dict:
                 key["state"] = "disabled"
             count = 0
             answer_list = []
             answer_dict = {}
-            #Increment our winner counter
+            # Increment our winner counter
             winner += 1
             if winner == 8:
                 win()
         else:
-            #my_label.config(text="DOH!")
+            # my_label.config(text="DOH!")
             count = 0
             answer_list = []
             # pop up bow
             messagebox.showinfo("Incorrect!", "Incorrect")
 
-            #Reset the buttons
+            # Reset the buttons
             for key in answer_dict:
                 key["text"] = " "
 
             answer_dict = {}
 
+# Define our buttons
+b0 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b0, 0),
+            relief="groove", bg="yellow")
+b1 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b1, 1),
+            relief="groove", bg="yellow")
+b2 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b2, 2),
+            relief="groove", bg="yellow")
+b3 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b3, 3),
+            relief="groove", bg="yellow")
+b4 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b4, 4),
+            relief="groove", bg="yellow")
+b5 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b5, 5),
+            relief="groove", bg="yellow")
+b6 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b6, 6),
+            relief="groove", bg="yellow")
+b7 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b7, 7),
+            relief="groove", bg="yellow")
+b8 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b8, 8),
+            relief="groove", bg="yellow")
+b9 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b9, 9),
+            relief="groove", bg="yellow")
+b10 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b10, 10),
+             relief="groove", bg="yellow")
+b11 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b11, 11),
+             relief="groove", bg="yellow")
+b12 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b12, 12),
+             relief="groove", bg="yellow")
+b13 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b13, 13),
+             relief="groove", bg="yellow")
+b14 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b14, 14),
+             relief="groove", bg="yellow")
+b15 = Button(my_frame, text=" ", font=("Helvetica", 20), height=3, width=6, command=lambda: button_click(b15, 15),
+             relief="groove", bg="yellow")
 
+# Grid our Buttons
+b0.grid(row=0, column=0)
+b1.grid(row=0, column=1)
+b2.grid(row=0, column=2)
+b3.grid(row=0, column=3)
 
-Define our buttons
-b0 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b0, 0), relief="groove")
-b1 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b1, 1), relief="groove")
-b2 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b2, 2), relief="groove")
-b3 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b3, 3), relief="groove")
-b4 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b4, 4), relief="groove")
-b5 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b5, 5), relief="groove")
-b6 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b6, 6), relief="groove")
-b7 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b7, 7), relief="groove")
-b8 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b8, 8), relief="groove")
-b9 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b9, 9), relief="groove")
-b10 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b10, 10), relief="groove")
-b11 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b11, 11), relief="groove")
-b12 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b12, 12), relief="groove")
-b13 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b13, 13), relief="groove")
-b14 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b14, 14), relief="groove")
-b15 = Button(my_frame, text=" ", font=("helvetica",20), height=3, width=6,command=lambda: button_click(b15, 15), relief="groove")
+b4.grid(row=1, column=0)
+b5.grid(row=1, column=1)
+b6.grid(row=1, column=2)
+b7.grid(row=1, column=3)
 
+b8.grid(row=2, column=0)
+b9.grid(row=2, column=1)
+b10.grid(row=2, column=2)
+b11.grid(row=2, column=3)
 
-#Grid our Butoons
-b0.grid(row=0,column=0)
-b1.grid(row=0,column=1)
-b2.grid(row=0,column=2)
-b3.grid(row=0,column=3)
+b12.grid(row=3, column=0)
+b13.grid(row=3, column=1)
+b14.grid(row=3, column=2)
+b15.grid(row=3, column=3)
 
-b4.grid(row=1,column=0)
-b5.grid(row=1,column=1)
-b6.grid(row=1,column=2)
-b7.grid(row=1,column=3)
-
-b8.grid(row=2,column=0)
-b9.grid(row=2,column=1)
-b10.grid(row=2,column=2)
-b11.grid(row=2,column=3)
-
-b12.grid(row=3,column=0)
-b13.grid(row=3,column=1)
-b14.grid(row=3,column=2)
-b15.grid(row=3,column=3)
-
-my_label = Label(root, text="", bg="light blue")  # setting label's background color to "light blue"
+my_label = Label(root, text="", bg="purple", fg="white", font=("Helvetica", 14))  # setting label's background color to "purple" and text color to "white"
 my_label.pack(pady=20)
 
 # Create a menu
@@ -174,7 +169,7 @@ option_menu.add_separator()
 option_menu.add_command(label="Exit Game", command=root.quit)
 
 # Create a label for the scoreboard
-scoreboard_label = Label(root, text="Score: 0", bg="light blue")  # setting label's background color to "light blue"
+scoreboard_label = Label(root, text="Score: 0", bg="purple", fg="white", font=("Helvetica", 14))  # setting label's background color to "purple" and text color to "white"
 scoreboard_label.pack()
 
 # Run the window
