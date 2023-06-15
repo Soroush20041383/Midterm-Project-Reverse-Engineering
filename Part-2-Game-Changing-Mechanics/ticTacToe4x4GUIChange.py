@@ -346,7 +346,7 @@ def b_click(b):
         count += 1
         checkifwon()
     else:
-        messagebox.showerror("Tic Tac Toe", "Hey! That box has already been selected\n pick abnother box...")
+        messagebox.showerror("Tic Tac Toe", "Hey! That box has already been selected\n pick another box...")
 
 
 # Start the game over!
@@ -356,25 +356,25 @@ def reset():
     clicked = True
     count = 0
     # build our buttons
-    b1 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b1))
-    b2 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b2))
-    b3 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b3))
-    b4 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b4))
+    b1 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b1))
+    b2 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b2))
+    b3 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b3))
+    b4 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b4))
 
-    b5 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b5))
-    b6 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b6))
-    b7 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b7))
-    b8 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b8))
+    b5 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b5))
+    b6 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b6))
+    b7 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b7))
+    b8 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b8))
 
-    b9 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b9))
-    b10 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b10))
-    b11 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b11))
-    b12 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b12))
+    b9 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b9))
+    b10 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b10))
+    b11 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b11))
+    b12 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b12))
 
-    b13 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b13))
-    b14 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b14))
-    b15 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b15))
-    b16 = Button(root, text=" ", font=("Helveica", 20), height=3, width=6, bg="aqua", command=lambda: b_click(b16))
+    b13 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b13))
+    b14 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b14))
+    b15 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b15))
+    b16 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="purple", command=lambda: b_click(b16))
 
     # Grid our buttons to the screen
     b1.grid(row=0, column=0)
@@ -409,17 +409,4 @@ options_menu.add_command(label="Reset Game", command=reset)
 
 reset()
 
-# ... All your existing code remains here ...
-
-# Create a menubar
-menubar = Menu(root)
-root.config(menu=menubar)
-
-# Create the game menu
-game_menu = Menu(menubar, tearoff=0)
-menubar.add_cascade(label="Game", menu=game_menu)
-game_menu.add_command(label="New Game", command=reset)
-game_menu.add_command(label="Exit", command=root.quit)
-
-# Keep this at the end of your script
 root.mainloop()

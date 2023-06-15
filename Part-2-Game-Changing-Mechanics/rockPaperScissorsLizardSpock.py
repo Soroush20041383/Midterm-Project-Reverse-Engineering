@@ -1,32 +1,35 @@
 from tkinter import *
 from random import randint
 from tkinter import ttk
-
-
+import requests
 
 root = Tk()
-root.title('Codemy.com - Rock, Paper, Scissors, Lizard, Spock')
-# root.iconbitmap('c:/gui/codemy.ico')
-root.geometry("500x600") # what does it do
-# Change bg color to white \
+root.title('Rock, Paper, Scissors, Lizard, Spock')
+root.geometry("500x600")
 root.config(bg="white")
 
-# Define our images
 rock = PhotoImage(file='C:\\Users\\Soroush\\Downloads\\Rock.png')
 paper = PhotoImage(file='C:\\Users\\Soroush\\Downloads\\Paper.png')
 scissors = PhotoImage(file='C:\\Users\\Soroush\\Downloads\\Scissors.png')
 lizard = PhotoImage(file='C:\\Users\\Soroush\\Downloads\\Lizard.png')
 spock = PhotoImage(file='C:\\Users\\Soroush\\Downloads\\Spock.png')
-# Add Images to a list
 image_list = [rock, paper, scissors, lizard, spock]
 
-# Pick random number between 0 and 4
 pick_number = randint(0, 4)
-
-# Throw up an image when the programs starts
 image_label = Label(root, image=image_list[pick_number], bd=0)
 image_label.pack(pady=20)
 
+def get_colors():
+    url = 'http://colormind.io/api/'
+    data = {
+        'model': 'default'
+    }
+    response = requests.post(url, json=data)
+    if response.status_code == 200:
+        colors = response.json()['result']
+        return ['#%02x%02x%02x' % (c[0], c[1], c[2]) for c in colors]
+    else:
+        return None
 # Create Spin Function
 def spin():
     # Pick random number
